@@ -13,6 +13,7 @@ import reactLogo from "../assets/react.svg";
 import viteLogo from "../assets/vite.svg";
 import tsLogo from "../assets/typescript.svg";
 import sassLogo from "../assets/sass.svg";
+import aerateLogo from "../assets/logo-aerate-v1.0.svg";
 
 import nodeJs from "../assets/node-js.svg";
 import adobe from "../assets/adobe.svg";
@@ -70,7 +71,7 @@ const Main = () => {
   return (
     <div className="app" style={{ backgroundColor: bgColor }}>
       <header className="app-header">
-        <img src={bolt} className="icon" />
+        <img src={aerateLogo} className="icon" />
         <div className="stack-icons">
           <div>
             <img src={viteLogo} />
