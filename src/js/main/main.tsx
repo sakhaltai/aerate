@@ -17,7 +17,7 @@ import aerateLogo from "../assets/logo-aerate-v1.0.svg";
 
 import nodeJs from "../assets/node-js.svg";
 import adobe from "../assets/adobe.svg";
-import bolt from "../assets/bolt-cep.svg";
+// import bolt from "../assets/bolt-cep.svg";
 
 import "./main.scss";
 
@@ -133,6 +133,7 @@ const Main = () => {
           >
             Vite Docs
           </button>
+          {" | "}
         </p>
       </header>
     </div>
