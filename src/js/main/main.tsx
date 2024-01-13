@@ -62,6 +62,18 @@ const Main = () => {
     );
   };
 
+  //#region unlockAllLayerInIllustrator
+  const unlockAllLayersInIllustrator = () => {
+    evalTS("unlockEverything")
+      .then(() => {
+        console.log("All layers unlocked in Illustrator");
+      })
+      .catch((e) => {
+        console.error("Error unlocking layers:", e);
+      });
+  };
+  //#endregion unlockAllLayersInIllustrator
+
   useEffect(() => {
     if (window.cep) {
       subscribeBackgroundColor(setBgColor);
@@ -104,6 +116,9 @@ const Main = () => {
             <img className="icon-button" src={adobe} />
           </button>
           <button onClick={jsxTestTS}>Ts</button>
+          <button onClick={unlockAllLayersInIllustrator}>
+            Unlock All Layers
+          </button>
         </div>
         <p>
           Edit <code>main.tsx</code> and save to test HMR updates.
