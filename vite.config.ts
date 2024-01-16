@@ -5,6 +5,7 @@ import { cep, runAction } from "vite-cep-plugin";
 import cepConfig from "./cep.config";
 import path from "path";
 import { extendscriptConfig } from "./vite.es.config";
+import checker from "vite-plugin-checker";
 
 const extensions = [".js", ".ts", ".tsx"];
 
@@ -48,7 +49,16 @@ if (action) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), cep(config)],
+  plugins: [
+    react(),
+    cep(config),
+    checker({
+      typescript: true,
+      eslint: {
+        lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
+      },
+    }),
+  ],
   resolve: {
     alias: [{ find: "@esTypes", replacement: path.resolve(__dirname, "src") }],
   },
