@@ -1434,11 +1434,6 @@ ansi-escapes@^4.3.0:
   dependencies:
     type-fest "^0.21.3"
 
-ansi-regex@*:
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-6.0.1.tgz#3183e38fae9a65d7cb5e53945cd5897d0260a06a"
-  integrity sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==
-
 ansi-regex@^2.0.0:
   version "2.1.1"
   resolved "https://registry.npmjs.org/ansi-regex/-/ansi-regex-2.1.1.tgz"
@@ -3228,7 +3223,7 @@ immutable@^4.0.0:
   resolved "https://registry.npmjs.org/immutable/-/immutable-4.3.4.tgz"
   integrity sha512-fsXeu4J4i6WNWSikpI88v/PcVflZz+6kMhUfIwc5SY+poQRPnaf5V7qds6SUyUN3cVxEzuCab7QIoLOQ+DQ1wA==
 
-imurmurhash@*, imurmurhash@^0.1.4:
+imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
   integrity sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==
@@ -5190,7 +5185,7 @@ verror@1.10.0:
 
 vite-cep-plugin@^1.1.8:
   version "1.1.8"
-  resolved "https://registry.npmjs.org/vite-cep-plugin/-/vite-cep-plugin-1.1.8.tgz"
+  resolved "https://registry.yarnpkg.com/vite-cep-plugin/-/vite-cep-plugin-1.1.8.tgz#8183ed2e6b7e5ee4e396e3b3092bb4adf32bdd6d"
   integrity sha512-9VtnTq/2Cu7hSWZ5q+4vIiqq+SwRqJSy58CJsDHPQ4XmBoiTLlu518GlHw3WbNNSt1ELY55OrhdpBZunGc2+5w==
   dependencies:
     "@types/archiver" "^5.3.1"

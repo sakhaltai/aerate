@@ -54,9 +54,6 @@ export default defineConfig({
     cep(config),
     checker({
       typescript: true,
-      eslint: {
-        lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
-      },
     }),
   ],
   resolve: {
