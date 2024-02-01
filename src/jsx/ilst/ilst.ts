@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import {
   helloVoid,
   helloError,
@@ -13,35 +15,33 @@ export const helloWorld = () => {
   alert("Hello from Illustrator");
 };
 
-export const unlockEverything = () => {
-  function unlockLayers(layers: any): void {
-    for (const layer of layers) {
-      layer.locked = false; // Unlock the layer
-
-      if (layer.layers) {
-        unlockLayers(layer.layers); // Recursively unlock sub-layers
-      }
-
-      if (layer.pageItems) {
-        unlockPageItems(layer.pageItems); // Unlock items within the layer
-      }
-    }
+export const exportArtboards = () => {
+  const results = [];
+  const abs = app.activeDocument.artboards;
+  for (let i = 0; i < abs.length; i++) {
+    app.activeDocument.artboards.setActiveArtboardIndex(i);
+    const destination = new File(
+      `${Folder.userData.toString()}/${abs[i].name || `Artboard ${i}`}.png`
+    );
+    exportArtboardToPNG(destination);
+    //
+    // We need to pretreat the filepath from a File() object to be POSIX:
+    results.push(destination.fsName.replace(/\\/gm, "/"));
   }
-
-  function unlockPageItems(pageItems: any): void {
-    for (const item of pageItems) {
-      item.locked = false; // Unlock the item
-
-      if (item.typename === "GroupItem") {
-        unlockPageItems(item.pageItems); // Recursively unlock items within the group
-      }
-    }
-  }
-
-  const document = app.activeDocument; // Ensure this is the correct way to access the active document in your environment
-  unlockLayers(document.layers);
-  (document as any).redraw(); // Refresh the Illustrator UI using type assertion
+  // And we return them to our UI:
+  return JSON.stringify(results);
 };
 
-// Usage
-// Call `unlockEverything()` within the context of your CEP extension
+export function exportArtboardToPNG(destFile) {
+  let exportOptions = new ExportOptionsPNG24();
+  exportOptions.artBoardClipping = true;
+  exportOptions.transparency = true;
+  exportOptions.horizontalScale = 100;
+  exportOptions.verticalScale = 100;
+  const fileExported = app.activeDocument.exportFile(
+    destFile,
+    ExportType.PNG24,
+    exportOptions
+  );
+  return destFile;
+}

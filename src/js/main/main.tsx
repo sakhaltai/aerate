@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { os, path } from "../lib/cep/node";
+import TooltipButton from "./TooltipButton";
 import {
   csi,
   evalES,
@@ -8,6 +9,7 @@ import {
   subscribeBackgroundColor,
   evalTS,
 } from "../lib/utils/bolt";
+import
 
 import reactLogo from "../assets/react.svg";
 import viteLogo from "../assets/vite.svg";
@@ -62,16 +64,28 @@ const Main = () => {
     );
   };
 
-  //#region unlockAllLayerInIllustrator
-  const unlockAllLayersInIllustrator = () => {
-    evalTS("unlockEverything")
-      .then(() => {
-        console.log("All layers unlocked in Illustrator");
-      })
-      .catch((e) => {
-        console.error("Error unlocking layers:", e);
-      });
+  //#region After Effects stuff
+  const explode = () => {
+    evalTS("explodeShapeLayers").then((res) => {
+      console.log(res);
+    });
   };
+
+  const flipHorizontal = () => {
+    evalTS("flipHorizontal").then((res) => {
+      console.log(res);
+    });
+  };
+
+  const flipVertical = () => {
+    evalTS("flipVertical").then((res) => {
+      console.log(res);
+    });
+  };
+  //#endregion After Effects stuff
+
+  //#region Illustrator Stuff
+
   //#endregion unlockAllLayersInIllustrator
 
   useEffect(() => {
@@ -116,10 +130,33 @@ const Main = () => {
             <img className="icon-button" src={adobe} />
           </button>
           <button onClick={jsxTestTS}>Ts</button>
-          <button onClick={unlockAllLayersInIllustrator}>
+          <button onClick={unlockAllLayerInIllustrator}>
             Unlock All Layers
           </button>
+          <button onClick={explode}>Explode</button>
+          <button onClick={flipHorizontal}>Flip X</button>
+          <button onClick={flipVertical}>Flip Y</button>
         </div>
+        <div className="sherbetButtons">
+          <TooltipButton
+            tooltipTitle={"Explode shape layers into component shapes"}
+            buttonText={"Explode 💣"}
+            onClick={explode}
+            buttonClass="sherbetButton"
+          />
+          <TooltipButton
+            tooltipTitle={"Flip (reflect) layer horizontally (across X axis)"}
+            buttonText={"Flip X"}
+            onClick={flipHorizontal}
+            buttonClass="sherbetButton"
+          />
+          <TooltipButton
+            tooltipTitle={"Flip (reflect) layer vertically (across Y axis)"}
+            buttonText={"Flip Y"}
+            onClick={flipVertical}
+            buttonClass="sherbetButton"
+          />
+                  </div>
         <p>
           Edit <code>main.tsx</code> and save to test HMR updates.
         </p>
